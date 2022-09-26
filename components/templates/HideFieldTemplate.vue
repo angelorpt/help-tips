@@ -80,20 +80,6 @@ export default {
     })
     return { selecionado, listaApi, idDi }
   },
-  // data() {
-  //   return {
-  //     selecionado: '',
-  //     listaApi: LISTA_API,
-  //   }
-  // },
-  // computed: {
-  //   idDi() {
-  //     const objeto = this.listaApi.find(
-  //       (elemento) => elemento.descricao.toLowerCase() === 'di'
-  //     )
-  //     return objeto.id
-  //   },
-  // },
 }
 </script>
 
