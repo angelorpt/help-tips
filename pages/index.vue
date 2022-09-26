@@ -4,6 +4,9 @@
     <NuxtLink class="btn btn-primary" to="/autopreencher"
       >Auto Preencher</NuxtLink
     >
+    <NuxtLink class="btn btn-primary" to="/hide-field"
+      >Ocultar/Mostrar Campos</NuxtLink
+    >
   </nav>
 </template>
 
