@@ -10,7 +10,7 @@
           <select v-model="selecionado" class="form-select">
             <option disabled hidden value="">Selecione</option>
             <option v-for="item in listaApi" :key="item.id" :value="item.id">
-              {{ item.descricao }}
+              {{ item.type }}
             </option>
           </select>
           <div class="ml-3">Valor Selecionado: {{ selecionado }}</div>
@@ -42,30 +42,58 @@
 </template>
 
 <script>
-const LISTA_API = [
-  { id: 1, descricao: 'Opção 1' },
-  { id: 3, descricao: 'Opção 2' },
-  { id: 33, descricao: 'DI' },
-]
+import { ref, computed } from 'vue'
+
+const LISTA_API = {
+  data: [
+    {
+      id: 1,
+      type: 'DOCUMENTO FISCAL',
+      description: 'Outros Documentos Fiscais',
+      user_id: '361910e3-c173-c061-e053-20fb96965d02',
+      created_at: '20-09-2022 14:42:39',
+      updated_at: '20-09-2022 14:42:39',
+    },
+    {
+      id: 21,
+      type: 'DI',
+      description: 'Documento de Importaão',
+      user_id: '361910e3-c173-c061-e053-20fb96965d02',
+      created_at: '23-09-2022 13:16:17',
+      updated_at: '23-09-2022 13:16:17',
+    },
+  ],
+}
 
 export default {
   name: 'HideFieldTemplate',
   components: {},
   props: {},
-  data() {
-    return {
-      selecionado: '',
-      listaApi: LISTA_API,
-    }
-  },
-  computed: {
-    idDi() {
-      const objeto = this.listaApi.find(
-        (elemento) => elemento.descricao.toLowerCase() === 'di'
+  setup() {
+    const selecionado = ref('')
+    const listaApi = ref(LISTA_API.data)
+    const idDi = computed(() => {
+      const objeto = listaApi.value.find(
+        (elemento) => elemento.type.toLowerCase() === 'di'
       )
       return objeto.id
-    },
+    })
+    return { selecionado, listaApi, idDi }
   },
+  // data() {
+  //   return {
+  //     selecionado: '',
+  //     listaApi: LISTA_API,
+  //   }
+  // },
+  // computed: {
+  //   idDi() {
+  //     const objeto = this.listaApi.find(
+  //       (elemento) => elemento.descricao.toLowerCase() === 'di'
+  //     )
+  //     return objeto.id
+  //   },
+  // },
 }
 </script>
 
