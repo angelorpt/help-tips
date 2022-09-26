@@ -9,24 +9,25 @@
           <span class="input-group-text">Seleção</span>
           <select v-model="selecionado" class="form-select">
             <option disabled hidden value="">Selecione</option>
-            <option value="1">Opção 1</option>
-            <option value="2">Opção 2</option>
-            <option value="di">DI</option>
+            <option v-for="item in listaApi" :key="item.id" :value="item.id">
+              {{ item.descricao }}
+            </option>
           </select>
           <div class="ml-3">Valor Selecionado: {{ selecionado }}</div>
+          <div class="ml-3">ID da opção DI: {{ idDi }}</div>
         </div>
 
-        <div v-if="selecionado === 'di'" class="input-group mb-3">
+        <div v-if="selecionado === idDi" class="input-group mb-3">
           <span class="input-group-text">DI 1</span>
           <input type="text" class="form-control" />
         </div>
 
-        <div v-if="selecionado === 'di'" class="input-group mb-3">
+        <div v-if="selecionado === idDi" class="input-group mb-3">
           <span class="input-group-text">DI 2</span>
           <input type="text" class="form-control" />
         </div>
 
-        <div v-if="selecionado !== 'di'" class="input-group mb-3">
+        <div v-if="selecionado !== idDi" class="input-group mb-3">
           <span class="input-group-text">Não DI</span>
           <input type="text" class="form-control" />
         </div>
@@ -41,6 +42,12 @@
 </template>
 
 <script>
+const LISTA_API = [
+  { id: 1, descricao: 'Opção 1' },
+  { id: 3, descricao: 'Opção 2' },
+  { id: 33, descricao: 'DI' },
+]
+
 export default {
   name: 'HideFieldTemplate',
   components: {},
@@ -48,7 +55,16 @@ export default {
   data() {
     return {
       selecionado: '',
+      listaApi: LISTA_API,
     }
+  },
+  computed: {
+    idDi() {
+      const objeto = this.listaApi.find(
+        (elemento) => elemento.descricao.toLowerCase() === 'di'
+      )
+      return objeto.id
+    },
   },
 }
 </script>
