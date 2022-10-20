@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <NuxtLink class="col-2 btn btn-secondary" to="/">Home</NuxtLink>
-    <h1 class="col-10">Mostrar/Ocultar Campos</h1>
+    <h1 class="col-10">Enviar Multi Forms</h1>
 
     <div class="row">
       <h2>Form1</h2>
