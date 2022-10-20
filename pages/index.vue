@@ -7,6 +7,7 @@
     <NuxtLink class="btn btn-primary" to="/hide-field"
       >Ocultar/Mostrar Campos</NuxtLink
     >
+    <NuxtLink class="btn btn-primary" to="/multi-form">Multi Form</NuxtLink>
   </nav>
 </template>
 
